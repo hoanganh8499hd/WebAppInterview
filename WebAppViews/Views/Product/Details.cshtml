@@ -1,0 +1,56 @@
+﻿@model WebAppViews.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div>
+    <h4>Product Details Html.Partial("_ProductDetails", Model)</h4>
+    <p>Rendering the Result of Partial View</p>
+    @Html.Partial("_ProductDetails", Model)
+    <br />
+    <p>Storing the Result of Partial View into a variable</p>
+    @{
+        var resultPartial = Html.Partial("_ProductDetails", Model);
+    }
+    <span>@resultPartial</span>
+</div>
+
+
+
+<div>
+    <h4>Product Details Html.PartialAsync("_ProductDetails", Model)</h4>
+    <p>Rendering the Result of Partial View</p>
+    @await Html.PartialAsync("_ProductDetails", Model)
+    <br />
+    <p>Storing the Result of Partial View into a variable</p>
+    @{
+        var resultPartialAsync = await Html.PartialAsync("_ProductDetails", Model);
+    }
+    <span>@resultPartialAsync</span>
+</div>
+
+
+<div>
+    <h4>Product Details partial tagname</h4>
+    <p>Rendering the Result of Partial View</p>
+    <partial name="_ProductDetails" model="Model" />
+</div>
+
+
+<p>Using Html.RenderPartial</p>
+@{
+    Html.RenderPartial("_ProductDetails", Model, ViewData);
+}
+
+<p>Using Html.RenderPartialAsync</p>
+@{
+    await Html.RenderPartialAsync("_ProductDetails", Model, ViewData);
+}
+@* 
+
+
+@Html.Partial: Trả về IHtmlString, có thể lưu vào biến, thích hợp cho các tình huống mà bạn cần xử lý chuỗi HTML (ví dụ, lưu trữ hoặc truyền qua các nơi khác trong mã).
+
+@Html.RenderPartial: Không trả về giá trị (kiểu void), trực tiếp ghi nội dung vào output stream, phù hợp khi bạn muốn render mà không cần giữ lại chuỗi HTML.
+
+Partial HTML Tag Helper: Dễ sử dụng hơn với cú pháp HTML thuần túy và không cần phải sử dụng mã C# trong Razor. Tuy nhiên, nó sẽ render partial view trực tiếp vào output mà không cần trả về giá trị. *@

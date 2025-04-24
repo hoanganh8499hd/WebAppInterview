@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+*@
+@{
+}
+@{
+    ViewBag.Title = "Detail Page";
+}
+
+<h3>Sections within a Layout View provide a way to inject content from a child view into specific places in the layout.</h3>
+
+<div>
+    <p>Sections trong ASP.NET Core MVC rất linh hoạt và có thể chứa bất kỳ loại nội dung nào mà bạn cần chèn vào layout. Các loại nội dung phổ biến bao gồm:</p>
+    <ul>
+        <li>JavaScript (JS)</li>
+        <li>CSS</li>
+        <li>HTML</li>
+        <li>Nội dung động từ cơ sở dữ liệu hoặc API</li>
+        <li>Các thành phần bên ngoài như iframe, widget, hoặc bản đồ</li>
+    </ul>
+    <p>Điều quan trọng là nội dung trong các sections này chỉ được render ở các vị trí mà bạn định nghĩa trong layout view, và chỉ render khi bạn xác định chúng trong các child views.</p>
+</div>
+
+<br />
+@section RecentComments {
+    <h3>Recent Comments</h3>
+    @{
+        var comments = await CommentService.GetRecentCommentsAsync();
+        if (comments.Any())
+        {
+            <ul>
+                @foreach (var comment in comments)
+                {
+                    <li>@comment.Text - <strong>@comment.User</strong></li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No recent comments.</p>
+        }
+    }
+}
+
+@section Scripts {
+    <script src="~/js/DetailsJavascript.js"></script>
+}

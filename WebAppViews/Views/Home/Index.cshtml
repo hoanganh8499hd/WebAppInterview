@@ -1,0 +1,23 @@
+﻿@{
+    
+    ViewData["Title"] = "Home Page";
+    //Layout = "~/Views/Shared/OtherLayout.cshtml"; định nghĩa layout
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+
+<!-- Cung cấp nội dung cho section Scripts trong layout :  await RenderSectionAsync("Scripts", required: false)-->
+@section Scripts {
+    <script>
+        console.log('Home page script loaded!');
+    </script>
+}
+
+<div class="text-center">
+    @await Component.InvokeAsync("TopProducts", new { count = 3 })
+</div>

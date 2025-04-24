@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Product>
+<div class="row">
+
+    <div>
+        <h4>Product Details</h4>
+
+        <table class="table">
+            <tr>
+                <th>
+                    ProductID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Price
+                </th>
+            </tr>
+
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>
+                        @product?.ProductID
+                    </td>
+                    <td>
+                        @product?.Name
+                    </td>
+                    <td>
+                        @product?.Category
+                    </td>
+                    <td>
+                        @product?.Description
+                    </td>
+                    <td>
+                        @product?.Price
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+<table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead style="background-color: #f2f2f2;">
+        <tr>
+            <th>🆚 So Sánh</th>
+            <th>Partial View</th>
+            <th>View Component</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Logic riêng</td>
+            <td>❌ Không có (tái sử dụng một khối HTML tĩnh)</td>
+            <td>✅ Có class xử lý logic</td>
+        </tr>
+        <tr>
+            <td>Phụ thuộc dữ liệu</td>
+            <td>✅ Phụ thuộc controller/view cha</td>
+            <td>❌ Tự lấy dữ liệu</td>
+        </tr>
+        <tr>
+            <td>Dùng lại</td>
+            <td>✅ Dễ tái sử dụng</td>
+            <td>✅ Dễ tái sử dụng</td>
+        </tr>
+        <tr>
+            <td>Hiệu suất</td>
+            <td>🟡 Tốt cho đơn giản</td>
+            <td>✅ Tốt cho dynamic content</td>
+        </tr>
+        <tr>
+            <td>Gọi như thế nào</td>
+            <td><code>Html.Partial</code> / <code>await Html.PartialAsync</code></td>
+            <td><code>await Component.InvokeAsync()</code> / <code>&lt;vc:...&gt;</code></td>
+        </tr>
+        <tr>
+            <td>Khi nào nên dùng</td>
+            <td>Header, Footer, Form</td>
+            <td>Menu động, danh sách, widget, cart,...</td>
+        </tr>
+    </tbody>
+</table>

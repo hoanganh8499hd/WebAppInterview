@@ -1,0 +1,33 @@
+﻿@* @{
+    Layout = "_Layout";
+} *@
+
+@* @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} *@
+
+@* _ViewStart.cshtml trong Views/Home sẽ ghi đè file trong Views/ 
+    (ASP.NET Core cho phép bạn tạo nhiều file _ViewStart.cshtml ở các cấp thư mục khác nhau.) *@
+
+@{
+    // Gán layout mặc định cho toàn bộ view trong thư mục và các thư mục con
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Khởi tạo ViewData dùng chung
+    ViewData["ApplicationName"] = "My ASP.NET Core MVC App";
+    ViewData["Header"] = "News Around Us";
+    ViewData["Title"] = "Welcome"; // Có thể bị ghi đè ở view cụ thể
+}
+
+
+@{
+    //Chọn layout theo điều kiện (ví dụ theo vai trò người dùng)
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
