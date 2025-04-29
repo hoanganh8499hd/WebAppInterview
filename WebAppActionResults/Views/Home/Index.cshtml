@@ -1,0 +1,37 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+
+<div id="partial-view-result" class="text-left">
+
+    <p>PartialViewResult Action</p>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var rawdata = { 'ProductId': '1' };
+        $.ajax({
+            type: "GET",
+            url: "/Home/PartialViewResult/",
+            data: rawdata,
+            success: function (viewHTML) {
+                $("#partial-view-result").html(viewHTML);
+            },
+            error: function (errorData) {
+                alert("An error occurred: " + errorData.responseText);
+            }
+        });
+    });
+</script>

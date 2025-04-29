@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppRouting", "WebAppRout
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppViews", "WebAppViews\WebAppViews.csproj", "{5264E340-B9AA-4E0A-8135-453613C4A03F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppActionResults", "WebAppActionResults\WebAppActionResults.csproj", "{969EAA6E-9D1B-4162-BDEA-1245C74AB4FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5264E340-B9AA-4E0A-8135-453613C4A03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5264E340-B9AA-4E0A-8135-453613C4A03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5264E340-B9AA-4E0A-8135-453613C4A03F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{969EAA6E-9D1B-4162-BDEA-1245C74AB4FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{969EAA6E-9D1B-4162-BDEA-1245C74AB4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{969EAA6E-9D1B-4162-BDEA-1245C74AB4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{969EAA6E-9D1B-4162-BDEA-1245C74AB4FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
