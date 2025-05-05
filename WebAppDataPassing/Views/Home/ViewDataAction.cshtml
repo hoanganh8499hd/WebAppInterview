@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+    var student = ViewData["Student"] as WebAppDataPassing.Models.Student;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div>@ViewData</div>
+    <br />
+
+    <h1>@ViewData["Header"]</h1>
+    <br />
+    <div>
+        StudentId : @student?.StudentId
+    </div>
+    <div>
+        Name : @student?.Name
+    </div>
+    <div>
+        Branch : @student?.Branch
+    </div>
+    <div>
+        Section : @student?.Section
+    </div>
+    <div>
+        Gender : @student?.Gender
+    </div>
+</body>
+</html>

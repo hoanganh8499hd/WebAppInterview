@@ -1,0 +1,35 @@
+﻿<h2>About</h2>
+<p> --- @(ViewData["Message"]?.ToString() ?? "Không có thông điệp")</p> 
+ <!-- Sẽ hiển thị trống nếu truy cập từ ViewDataRedirectToAbout -->
+
+
+@*  ?.ToString() chỉ gọi ToString() nếu ViewData["Message"] khác null.
+
+    ?? dùng để gán giá trị mặc định nếu bên trái là null. *@
+
+
+
+@{
+    Layout = null;
+    var student = ViewBag.Student;
+}
+
+
+<body>
+    <h1>@ViewBag.Header</h1>
+    <div>
+        StudentId : @student?.StudentId
+    </div>
+    <div>
+        Name : @student?.Name
+    </div>
+    <div>
+        Branch : @student?.Branch
+    </div>
+    <div>
+        Section : @student?.Section
+    </div>
+    <div>
+        Gender : @student?.Gender
+    </div>
+</body>

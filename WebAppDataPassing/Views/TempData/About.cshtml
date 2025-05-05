@@ -1,0 +1,46 @@
+﻿@using WebAppDataPassing.Models
+@{
+    ViewData["Title"] = "About Page";
+   
+}
+
+<div>
+    Cookie-based TempData:
+
+    Lợi thế: Nhẹ nhàng, nhanh chóng, không phụ thuộc vào server.
+
+    Hạn chế: Giới hạn dung lượng (khoảng 4KB), dễ bị lộ thông tin nếu không mã hóa đúng cách.
+
+    <br />
+
+    Session-based TempData:
+
+    Lợi thế: Lưu trữ dữ liệu lớn, bảo mật hơn, lưu trữ trên server, giúp theo dõi trạng thái người dùng.
+
+    Hạn chế: Phải cấu hình session trên server, dữ liệu bị giới hạn trong phiên làm việc của người dùng.
+
+</div>
+<div class="text-left">
+    <b>Name:</b> @TempData["Name"]
+    <br />
+    <b>Age:</b> @TempData["Age"]
+</div>
+
+
+<body>
+    <div>
+        StudentId : @Model.StudentId
+    </div>
+    <div>
+        Name :  @Model.Name
+    </div>
+    <div>
+        Branch :  @Model.Branch
+    </div>
+    <div>
+        Section :  @Model.Section
+    </div>
+    <div>
+        Gender :  @Model.Gender
+    </div>
+</body>
