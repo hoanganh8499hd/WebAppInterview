@@ -1,0 +1,83 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Submit Your Details</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(ViewBag.Message))
+                    {
+                        <div class="alert alert-success">
+                            @ViewBag.Message
+                        </div>
+                    }
+                    @* IFormCollection *@
+
+                    @* <form method="post" asp-controller="Home" asp-action="SubmitFormIFormCollection">
+                        <div class="form-group mt-2">
+                            <label for="UserName">Name:</label>
+                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Enter your name" />
+                        </div>
+                        <div class="form-group  mt-2">
+                            <label for="UserEmail">Email:</label>
+                            <input type="email" class="form-control" id="UserEmail" name="UserEmail" placeholder="Enter your email" />
+                        </div>
+                        <div class="form-group mt-2">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </form> *@
+                    
+                    <div>
+                        <nav>
+                            <ul>
+                                <li><a href="@Url.Action("GetUser", "BuiltinModelBinders", new { id = 1, userName = "John" })">Get User</a></li>
+                                <li><a href="@Url.Action("Register", "BuiltinModelBinders")">Register User</a></li>
+                                <li><a href="@Url.Action("ProcessNumbers", "BuiltinModelBinders")">Process Numbers</a></li>
+                                <li><a href="@Url.Action("ProcessDictionary", "BuiltinModelBinders")">Process Dictionary</a></li>
+                                <li><a href="@Url.Action("ProcessDate", "BuiltinModelBinders", new { dateOfBirth = "2025-05-05" })">Process Date</a></li>
+                                <li><a href="@Url.Action("UploadFile", "BuiltinModelBinders")">Upload File</a></li>
+                                <li><a href="@Url.Action("SubmitForm", "BuiltinModelBinders")">Submit Form</a></li>
+                                <li><a href="@Url.Action("AssignRole", "BuiltinModelBinders")">Assign Role</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                    <a href="@Url.Action("ProcessNumbers", "BuiltinModelBinders", new { numbers = new[] { 5, 10, 15 } })">
+                        Process Numbers with Query
+                    </a>
+
+                    <form method="post" asp-controller="Home" asp-action="SubmitForm">
+                        <div class="form-group mt-2">
+                            <label asp-for="UserName"></label>
+                            <input asp-for="UserName" class="form-control" placeholder="Enter your name" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label asp-for="UserEmail"></label>
+                            <input asp-for="UserEmail" class="form-control" placeholder="Enter your email" />
+                            <span asp-validation-for="UserEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-2">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
