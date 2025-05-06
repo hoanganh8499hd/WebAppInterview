@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Primitives;
+using System;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using WebAppModelBinding.Models;
+using WebAppModelBinding.Models.CustomModelBinding;
 
 namespace WebAppModelBinding.Controllers
 {
@@ -31,6 +34,37 @@ namespace WebAppModelBinding.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        //Tạo Custom Model Binder: Triển khai giao diện IModelBinder và phương thức BindModelAsync.
+
+        //Tạo Model Binder Provider: Triển khai giao diện IModelBinderProvider để xác định khi nào sử dụng bộ ràng buộc tùy chỉnh.
+
+        //Đăng ký Custom Binder: Thêm bộ ràng buộc tùy chỉnh vào cấu hình MVC trong quá trình khởi tạo ứng dụng.
+
+        [HttpGet("home/getdetails")]
+        public IActionResult GetDetails([ModelBinder(typeof(CommaSeparatedModelBinder))] List<int> ids)
+        {
+            return Ok(ids);
+        }
+
+        /// /home/getdata?range=01/01/2025-12/31/2025,
+
+        [HttpGet("home/getdata")]
+        public IActionResult GetData([ModelBinder(typeof(DateRangeModelBinder))] DateRange range)
+        {
+            // Do something with range.StartDate and range.EndDate
+            return Ok($"From {range.StartDate} to {range.EndDate}");
+        }
+
+        //  /data/Vietnam?age=25&refId=12345
+
+        [HttpGet("data/{country}")]
+        public IActionResult GetComplexUserData([ModelBinder(typeof(ComplexUserModelBinder))] ComplexUser user)
+        {
+            // Your logic...
+            return Ok(user);
         }
 
 

@@ -1,4 +1,6 @@
-﻿namespace WebAppModelBinding
+﻿using WebAppModelBinding.Models.CustomModelBinding;
+
+namespace WebAppModelBinding
 {
     public class Program
     {
@@ -21,6 +23,13 @@
                 }
             });
 
+            builder.Services.AddControllersWithViews(options =>
+            {
+                // Add the provider at the top of the list to ensure it runs before default providers
+                options.ModelBinderProviders.Insert(0, new CommaSeparatedModelBinderProvider());
+                options.ModelBinderProviders.Insert(1, new DateRangeModelBinderProvider());
+                options.ModelBinderProviders.Insert(2, new ComplexUserModelBinderProvider());
+            });
 
             //builder.Services.AddLogging();
             //builder.Services.AddControllersWithViews(options =>
