@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using WebAppCRUD.GenericRepository;
 using WebAppCRUD.Models;
+using WebAppCRUD.Repository;
 
 namespace WebAppCRUD
 {
@@ -39,6 +41,16 @@ namespace WebAppCRUD
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("EFCoreDBConnection"));
             });
+
+            //builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+            //Registering the Specific Repository
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+
+
+            //Registering the GenericRepository
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
